@@ -1,0 +1,15 @@
+{
+  "name": "parrot",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "dev": "lerna run dev",
+    "start": "lerna run start",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}

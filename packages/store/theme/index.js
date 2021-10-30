@@ -6,11 +6,31 @@ const theme = createTheme({
       '@global': {
         html: {
           backgroundColor: '#111111',
-          fontFamily: ['Roboto', 'sans-serif'].join(','),
         },
         body: {
-          backgroundColor: '#F04E4A',
+          backgroundColor: '#E1E1E1',
           minHeight: '100vh',
+        },
+      },
+    },
+    MuiPaper: {
+      elevation8: {
+        boxShadow:
+          '0px 5px 5px -3px rgba(0,0,0,0.1), 0px 2px 6px 1px rgba(0,0,0,0.1), 0px 3px 14px 2px rgba(0,0,0,0.1)',
+      },
+    },
+    MuiSwitch: {
+      colorSecondary: {
+        '&$checked': {
+          color: '#F04E4A',
+        },
+      },
+      track: {
+        opacity: 0.7,
+        backgroundColor: '#C04E4A',
+        '$checked$checked + &': {
+          opacity: 0.6,
+          backgroundColor: '#F04E4A',
         },
       },
     },
@@ -25,6 +45,7 @@ const theme = createTheme({
     grey1: '#757575',
     grey2: '#6F6F6F',
     grey3: '#D1D1D1',
+    parrot: '#F04E4A',
     text: {
       primary: '#111111',
       secondary: '#FFFFFF',

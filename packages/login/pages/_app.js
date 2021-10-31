@@ -19,12 +19,6 @@ function App({ Component, pageProps }) {
       <Head>
         <title>Parrot | Login</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link
-          rel="icon"
-          type="image/png"
-          href="https://pos.parrotsoftware.io/wp-content/themes/parrot-theme/images/favicon/favicon-196x196.png"
-          sizes="196x196"
-        />
       </Head>
 
       <ThemeProvider theme={theme}>

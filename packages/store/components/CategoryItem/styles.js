@@ -4,10 +4,12 @@ export const useStyles = makeStyles(theme => ({
   card: {
     display: 'flex',
     flexShrink: '0',
+    width: '216px',
+    border: '1px solid transparent',
   },
   active: {
-    border: `2px solid ${theme.palette.parrot}`,
-    backgroundColor: 'rgba(240, 78,74,.1)',
+    border: `1px solid ${theme.palette.parrot}`,
+    backgroundColor: 'rgba(240, 78,74,.07)',
   },
   cardContent: {
     paddingBottom: '0.8rem !important',

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,9 +12,13 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "clsx": "^1.1.1",
+    "immer": "^9.0.6",
+    "login-page": "^0.1.0",
     "next": "12.0.1",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "redux-saga": "^1.1.3",
+    "redux-saga-routines": "^3.2.3"
   }
 }

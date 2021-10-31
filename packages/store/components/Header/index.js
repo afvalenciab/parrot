@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Grid, Menu, MenuItem, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
+
+import { useDispatcherStores } from 'providers/Stores/useDispatcher';
+import { useSelectorsStore } from 'providers/Stores/useSelectors';
+
+import { logOut } from 'utils/auth';
+
 import { useStyles } from './styles';
 
 export default function Header() {
   const theme = useTheme();
   const classes = useStyles(theme);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [storeSelected, setStoreSelected] = useState({ name: 'Store Apple Challenge' });
+  const [storeSelected, setStoreSelected] = useState(null);
+
+  const { getStores, getProducts } = useDispatcherStores();
+  const { storesState } = useSelectorsStore();
+
+  useEffect(() => {
+    getStores();
+  }, []);
+
+  useEffect(() => {
+    const { data } = storesState;
+
+    if (storesState.loaded && data?.stores?.length) {
+      setStoreSelected(data.stores[0]);
+      getProducts({ storeId: data.stores[0]?.uuid });
+    }
+  }, [storesState.loaded]);
 
   const handleOpenMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -17,6 +39,7 @@ export default function Header() {
   const handleSelectStore = store => {
     setStoreSelected(store);
     setAnchorEl(null);
+    getProducts({ storeId: store.uuid });
   };
 
   return (
@@ -32,15 +55,11 @@ export default function Header() {
             keepMounted
             open={!!anchorEl}
             onClose={() => setAnchorEl(null)}>
-            <MenuItem onClick={() => handleSelectStore({ name: 'Store Android Challenge' })}>
-              Store Android Challenge
-            </MenuItem>
-            <MenuItem onClick={() => handleSelectStore({ name: 'Store DiDi' })}>
-              Store DiDi
-            </MenuItem>
-            <MenuItem onClick={() => handleSelectStore({ name: 'Store Uber' })}>
-              Store Uber
-            </MenuItem>
+            {storesState?.data?.stores.map(item => (
+              <MenuItem id={item.uuid} key={item.uuid} onClick={() => handleSelectStore(item)}>
+                {item.name}
+              </MenuItem>
+            ))}
           </Menu>
         </div>
 
@@ -48,11 +67,11 @@ export default function Header() {
           <Grid container alignItems="center" className={classes.username}>
             <PersonOutlineIcon color="secondary" />
             <Typography variant="caption" color="secondary" align="center">
-              Andres Valencia
+              {storesState?.data?.username || storesState?.data?.email}
             </Typography>
           </Grid>
 
-          <Button variant="outlined" color="secondary">
+          <Button variant="outlined" color="secondary" onClick={() => logOut()}>
             Salir
           </Button>
         </Grid>

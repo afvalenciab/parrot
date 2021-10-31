@@ -1,11 +1,10 @@
 import { useState } from 'react';
+import { LOCAL_STORAGE } from 'utils/constants';
 
 export default function useLogin() {
   const [loginState, setLoginState] = useState({
     loading: false,
-    loaded: false,
     error: null,
-    data: null,
   });
 
   const fetchLogin = async ({ username, password }) => {
@@ -26,13 +25,18 @@ export default function useLogin() {
       const { errors } = data;
 
       if (errors) {
-        setLoginState({ loading: false, loaded: false, data: null, error: errors[0]?.message });
+        setLoginState({ loading: false, error: errors[0]?.message });
         return;
       }
 
-      setLoginState({ loading: false, loaded: true, error: null, data });
+      localStorage.setItem(LOCAL_STORAGE.TOKEN_ACCESS, data.access);
+      localStorage.setItem(LOCAL_STORAGE.TOKEN_REFRESH, data.refresh);
+
+      window.location.assign('http://localhost:3000/');
+
+      setLoginState({ loading: false, error: null });
     } catch (error) {
-      setLoginState({ loading: false, loaded: false, data: null, error: error.message });
+      setLoginState({ loading: false, error: error.message });
     }
   };
 

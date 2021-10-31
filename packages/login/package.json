@@ -5,7 +5,7 @@
   "author": "Andres Felipe Valencia Benitez <afvalenciab@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

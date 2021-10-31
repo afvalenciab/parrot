@@ -1,13 +1,20 @@
 import { Grid, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+import { useSelectorsStore } from 'providers/Stores/useSelectors';
 import ProductItem from 'components/ProductItem';
 
 import { useStyles } from './styles';
 
-export default function ProductList() {
+export default function ProductList({ categorySelected }) {
   const theme = useTheme();
   const classes = useStyles(theme);
+
+  const { productsState } = useSelectorsStore();
+
+  const listOfProducts = productsState.list.filter(
+    item => item?.category?.uuid === categorySelected?.uuid,
+  );
 
   return (
     <Grid className={classes.container} component="section">
@@ -17,22 +24,9 @@ export default function ProductList() {
         </Typography>
 
         <Grid className={classes.wrapperItems}>
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
-          <ProductItem />
+          {listOfProducts.map(product => (
+            <ProductItem key={product.uuid} product={product} />
+          ))}
         </Grid>
       </div>
     </Grid>

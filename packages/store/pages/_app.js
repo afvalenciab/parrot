@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import StoresProvider from 'providers/Stores';
+
 import theme from 'theme';
 
 function App({ Component, pageProps }) {
@@ -23,7 +25,9 @@ function App({ Component, pageProps }) {
 
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <StoresProvider>
+          <Component {...pageProps} />
+        </StoresProvider>
       </ThemeProvider>
     </>
   );

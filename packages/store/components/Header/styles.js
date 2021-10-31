@@ -12,7 +12,7 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   username: {
-    '@media (max-width: 440px)': {
+    '@media (max-width: 570px)': {
       display: 'none',
     },
   },

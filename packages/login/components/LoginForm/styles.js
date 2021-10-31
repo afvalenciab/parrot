@@ -27,4 +27,7 @@ export const useStyles = makeStyles(theme => ({
   wrapperFields: {
     paddingTop: '1rem',
   },
+  paddingTop: {
+    paddingTop: '.5rem',
+  },
 }));

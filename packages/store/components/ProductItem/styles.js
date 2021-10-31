@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles({
   card: {
     display: 'flex',
     flexDirection: 'row',
@@ -10,10 +10,10 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   cardMedia: {
-    // border: `1px solid ${theme.palette.grey3}`,
     borderRadius: '.5rem',
     margin: '.5rem',
     overflow: 'hidden',
+    flexShrink: 0,
   },
   cardContent: {
     display: 'flex',
@@ -33,4 +33,10 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'end',
     paddingRight: '1rem',
   },
-}));
+  available: {
+    color: 'green',
+  },
+  unavailable: {
+    color: 'red',
+  },
+});

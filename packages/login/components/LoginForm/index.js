@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-import { Button, Box, Grid, TextField, Typography, CircularProgress } from '@material-ui/core';
+import { Button, Grid, TextField, Typography, CircularProgress } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 
 import useLogin from 'hooks/useLogin';
@@ -28,13 +27,8 @@ export default function LoginForm() {
     <Grid container className={classes.root}>
       <Grid container justifyContent="center">
         <Grid container component="section" direction="column" className={classes.wrapperForm}>
-          <Image
-            src="/images/parrotLogo.svg"
-            width="60px"
-            height="60px"
-            alt="Parrot logo"
-            priority
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/parrotLogo.svg" width="100%" height="60px" alt="Parrot logo" />
 
           <form className={classes.wrapperFields} onSubmit={handleSubmit(fetchLogin)}>
             <TextField
@@ -78,19 +72,15 @@ export default function LoginForm() {
           </form>
 
           {loginState.error && (
-            <Box pt={2}>
-              <Typography variant="subtitle1" color="error">
-                * El usuario o la contraseña son incorrectos
-              </Typography>
-            </Box>
+            <Typography variant="subtitle1" color="error" className={classes.paddingTop}>
+              * El usuario o la contraseña son incorrectos
+            </Typography>
           )}
         </Grid>
 
-        <Box mt={2}>
-          <Typography variant="body1" align="center" color="secondary">
-            {`Copyright © | Parrot ${new Date().getFullYear()}`}
-          </Typography>
-        </Box>
+        <Typography variant="body1" align="center" color="secondary" className={classes.paddingTop}>
+          {`Copyright © | Parrot ${new Date().getFullYear()}`}
+        </Typography>
       </Grid>
     </Grid>
   );

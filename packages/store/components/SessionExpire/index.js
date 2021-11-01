@@ -33,7 +33,7 @@ export default function SessionExpire() {
     if (!closeSessionAt) {
       isExpired = isTokenExpired(tokenExpireAt);
 
-      if (isExpired && !showTimeWarning) {
+      if (isExpired && !showTimeWarning && tokenExpireAt) {
         setShowTimeWarning(true);
       }
     } else {

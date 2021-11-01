@@ -32,7 +32,7 @@ export default function useLogin() {
       localStorage.setItem(LOCAL_STORAGE.TOKEN_ACCESS, data.access);
       localStorage.setItem(LOCAL_STORAGE.TOKEN_REFRESH, data.refresh);
 
-      window.location.assign('http://localhost:3000/');
+      window.location.assign('/');
 
       setLoginState({ loading: false, error: null });
     } catch (error) {

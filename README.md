@@ -2,6 +2,8 @@
 
 Parrot is a Mexican technological solution for restaurants in the digital age. Parrot is a software that centralizes: All menus, sales channels, brands and branch offices on a single platform.
 
+Visit the application in the link below: https://parrotstore.vercel.app/
+
 ## Login
 <img width="1437" alt="Screen Shot 2021-11-01 at 8 10 20" src="https://user-images.githubusercontent.com/22135167/139685272-e39c0c74-ef97-4e68-b2f4-b616384c59d0.png">
 

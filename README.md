@@ -1,6 +1,6 @@
 # Parrot Software
 
-Parrot is Mexico's technological solution for restaurants in the digital age. Parrot is a software that centralizes: All menus, sales channels, brands and branch offices on a single platform.
+Parrot is a Mexican technological solution for restaurants in the digital age. Parrot is a software that centralizes: All menus, sales channels, brands and branch offices on a single platform.
 
 ## Login
 <img width="1437" alt="Screen Shot 2021-11-01 at 8 10 20" src="https://user-images.githubusercontent.com/22135167/139685272-e39c0c74-ef97-4e68-b2f4-b616384c59d0.png">
@@ -64,12 +64,12 @@ yarn run test
 
 - The application was created using: Lerna, React, Next.JS, SWR, react-hook-form, Material-ui, HTML, CSS-in-JS ,Javascript, Jest, @testing-library/react.
 
-- The application use an user and password to login and it provide feedback when an error happen.
+- The application uses an user and password to login and it provides feedback when an error happens.
 
-- The login page does not show again during the session lifetime.
+- The login page will not be displayed again for the session lifetime.
 
 - Each product can be enable or disabled.
 
-- The session lifetime is 25 minutes, but with the possibility to expand it each 25 minutes. If the session is not expanded it will close after 5 minutes.
+- The session lifetime is 25 minutes, but with the possibility to expand it each 25 minutes. If the session is not expanded it will be closed after 5 minutes.
 
-- The application has a real time experience, if any products change in the back-office the frontend will show the change.
+- The application has a real time experience, if any product changes in the back-office the frontend will show the change.

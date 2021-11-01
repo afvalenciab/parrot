@@ -2,8 +2,8 @@ module.exports = {
   async rewrites() {
     return [
       { source: '/:path*', destination: '/:path*' },
-      { source: '/login', destination: 'http://localhost:4000/login' },
-      { source: '/login/:path*', destination: 'http://localhost:4000/login/:path*' },
+      { source: '/login', destination: `${process.env.URL_LOGIN_PAGE}/login` },
+      { source: '/login/:path*', destination: `${process.env.URL_LOGIN_PAGE}/login/:path*` },
     ];
   },
   reactStrictMode: true,

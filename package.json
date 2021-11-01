@@ -7,11 +7,11 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "dev": "lerna run dev",
-    "build": "lerna run build",
-    "start": "lerna run start",
-    "test": "lerna run test",
-    "clean": "lerna clean --yes"
+    "clean": "lerna clean --yes",
+    "login": "yarn workspace login dev",
+    "store": "yarn workspace store dev",
+    "dev": "yarn run login & yarn run store",
+    "test": "yarn workspace store test"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.8",

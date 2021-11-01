@@ -11,6 +11,7 @@ export default function ProductItem({ product }) {
   const theme = useTheme();
   const classes = useStyles(theme);
   const { editProduct } = useDispatcherStores();
+
   const status = {
     isAvailable: product?.availability === 'AVAILABLE',
     label: product?.availability === 'AVAILABLE' ? 'Disponible' : 'No disponible',

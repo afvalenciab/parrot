@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { Container, CircularProgress, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { LOCAL_STORAGE } from 'utils/constants';
+import { redirectToLogin } from 'utils/auth';
 
 import Header from 'components/Header';
 import CategoryList from 'components/CategoryList';
 import ProductList from 'components/ProductList';
+import SessionExpire from 'components/SessionExpire';
 
 const useStyles = makeStyles({
   resetPadding: {
@@ -37,46 +38,42 @@ const useStyles = makeStyles({
 });
 
 export default function Store() {
-  const [tokenAccess, setTokenAccess] = useState(null);
   const classes = useStyles();
-  const router = useRouter();
-  const { access, refresh } = router.query;
+  const [tokenAccess, setTokenAccess] = useState(null);
+
+  const [storeSelected, setStoreSelected] = useState(null);
   const [categorySelected, setCategorySelected] = useState(null);
+  let token;
 
   useEffect(() => {
-    if (access && refresh) {
-      localStorage.setItem(LOCAL_STORAGE.TOKEN_ACCESS, access);
-      localStorage.setItem(LOCAL_STORAGE.TOKEN_REFRESH, refresh);
-      setTokenAccess(access);
-      router.replace({ pathname: '/' });
-    }
-  }, [access, refresh]);
+    token = localStorage.getItem(LOCAL_STORAGE.TOKEN_ACCESS);
 
-  useEffect(() => {
-    const token = localStorage.getItem(LOCAL_STORAGE.TOKEN_ACCESS);
-
-    if (!tokenAccess) {
-      if (token) {
-        setTokenAccess(token);
-      } else {
-        router.push({ pathname: '/login' });
-      }
+    if (token) {
+      setTokenAccess(token);
+    } else {
+      redirectToLogin();
     }
-  }, [tokenAccess]);
+  }, []);
 
   return (
     <Container component="main" maxWidth="xl" className={classes.resetPadding}>
       {tokenAccess ? (
-        <Grid className={classes.root}>
-          <Header />
+        <>
+          <Grid className={classes.root}>
+            <Header storeSelected={storeSelected} setStoreSelected={setStoreSelected} />
 
-          <CategoryList
-            onSelectCategory={setCategorySelected}
-            categorySelected={categorySelected}
-          />
+            <CategoryList
+              onSelectCategory={setCategorySelected}
+              categorySelected={categorySelected}
+            />
 
-          <ProductList categorySelected={categorySelected} />
-        </Grid>
+            {storeSelected && categorySelected && (
+              <ProductList storeSelected={storeSelected} categorySelected={categorySelected} />
+            )}
+          </Grid>
+
+          <SessionExpire />
+        </>
       ) : (
         <Grid className={classes.loadingPage}>
           <CircularProgress size={60} />

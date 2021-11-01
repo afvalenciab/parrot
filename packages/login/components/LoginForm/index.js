@@ -4,6 +4,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
 
 import useLogin from 'hooks/useLogin';
+import { LOCAL_STORAGE } from 'utils/constants';
 
 import { useStyles } from './styles';
 
@@ -14,14 +15,10 @@ export default function LoginForm() {
   const [loginState, fetchLogin] = useLogin();
 
   useEffect(() => {
-    const { data } = loginState;
-
-    if (loginState.loaded) {
-      window.location.replace(
-        `http://localhost:4000/?access=${data.access}&refresh=${data.refresh}`,
-      );
+    if (localStorage.getItem(LOCAL_STORAGE.TOKEN_ACCESS)) {
+      window.location.assign('/');
     }
-  }, [loginState.loaded]);
+  }, []);
 
   return (
     <Grid container className={classes.root}>

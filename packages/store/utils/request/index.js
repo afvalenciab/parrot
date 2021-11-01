@@ -2,6 +2,7 @@ import { LOCAL_STORAGE } from 'utils/constants';
 
 export default function request(url, options = {}) {
   const requestOptions = {
+    method: 'GET',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ export default function useLogin() {
     try {
       setLoginState({ ...loginState, loading: true });
 
-      const response = await fetch('http://api-staging.parrot.rest/api/auth/token', {
+      const response = await fetch('https://api-staging.parrot.rest/api/auth/token', {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',

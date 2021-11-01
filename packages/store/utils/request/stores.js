@@ -1,6 +1,6 @@
 import request from './index';
 
-export const BASE_URL = 'http://api-staging.parrot.rest/api';
+export const BASE_URL = 'https://api-staging.parrot.rest/api';
 
 export function getStoresRequest() {
   return request(`${BASE_URL}/v1/users/me`, {

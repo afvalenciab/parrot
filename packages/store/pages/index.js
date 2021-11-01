@@ -40,6 +40,8 @@ const useStyles = makeStyles({
 export default function Store() {
   const classes = useStyles();
   const [tokenAccess, setTokenAccess] = useState(null);
+
+  const [storeSelected, setStoreSelected] = useState(null);
   const [categorySelected, setCategorySelected] = useState(null);
   let token;
 
@@ -58,14 +60,16 @@ export default function Store() {
       {tokenAccess ? (
         <>
           <Grid className={classes.root}>
-            <Header />
+            <Header storeSelected={storeSelected} setStoreSelected={setStoreSelected} />
 
             <CategoryList
               onSelectCategory={setCategorySelected}
               categorySelected={categorySelected}
             />
 
-            <ProductList categorySelected={categorySelected} />
+            {storeSelected && categorySelected && (
+              <ProductList storeSelected={storeSelected} categorySelected={categorySelected} />
+            )}
           </Grid>
 
           <SessionExpire />

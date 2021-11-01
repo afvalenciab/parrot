@@ -10,11 +10,10 @@ import { logOut } from 'utils/auth';
 
 import { useStyles } from './styles';
 
-export default function Header() {
+export default function Header({ storeSelected, setStoreSelected }) {
   const theme = useTheme();
   const classes = useStyles(theme);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [storeSelected, setStoreSelected] = useState(null);
 
   const { getStores, getProducts } = useDispatcherStores();
   const { storesState } = useSelectorsStore();

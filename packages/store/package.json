@@ -14,7 +14,6 @@
     "@material-ui/icons": "^4.11.2",
     "clsx": "^1.1.1",
     "immer": "^9.0.6",
-    "login-page": "^0.1.0",
     "next": "12.0.1",
     "prop-types": "^15.7.2",
     "react": "17.0.2",

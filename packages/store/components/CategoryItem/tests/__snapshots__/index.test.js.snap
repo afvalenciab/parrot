@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryItem /> Should render correctly 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-card-1 makeStyles-active-2 MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="category-123"
+  >
+    <button
+      class="MuiButtonBase-root MuiCardActionArea-root"
+      data-testid="btn-123"
+      tabindex="0"
+      type="button"
+    >
+      <div
+        class="MuiCardContent-root makeStyles-cardContent-3"
+      >
+        <h3
+          class="MuiTypography-root makeStyles-title-4 MuiTypography-subtitle1"
+        >
+          Category 1
+        </h3>
+        <p
+          class="MuiTypography-root makeStyles-items-5 MuiTypography-body2"
+        >
+          2 artículos
+        </p>
+      </div>
+      <span
+        class="MuiCardActionArea-focusHighlight"
+      />
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;

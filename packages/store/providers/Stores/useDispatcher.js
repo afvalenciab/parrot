@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { getStoresRequest, getProductsRequest, editProductRequest } from 'utils/request/stores';
-import { StoreContext } from 'providers/Stores';
+import { StoreContext } from './index';
 import * as actions from './actions';
 
 let storesDispatcher;

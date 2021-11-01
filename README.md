@@ -41,7 +41,7 @@ yarn clean
 
 ### Environment Variables
 
-Rename '.env.example' file to '.env'
+Rename '.env.example' file to '.env' in the package/store directory
 
 ### Execution
 

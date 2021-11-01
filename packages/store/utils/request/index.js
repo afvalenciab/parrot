@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE } from 'utils/constants';
+import { LOCAL_STORAGE } from '../constants';
 
 export default function request(url, options = {}) {
   const requestOptions = {

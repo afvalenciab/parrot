@@ -22,7 +22,7 @@ export default function ProductItem({ product }) {
   };
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} data-testid={`card-${product.uuid}`}>
       <div className={classes.wrapperContent}>
         <CardMedia className={classes.cardMedia}>
           <Image src={product?.imageUrl} width={100} height={100} alt={product?.name} priority />

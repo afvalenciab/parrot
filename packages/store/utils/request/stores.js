@@ -1,4 +1,4 @@
-import request from 'utils/request';
+import request from './index';
 
 export const BASE_URL = 'http://api-staging.parrot.rest/api';
 

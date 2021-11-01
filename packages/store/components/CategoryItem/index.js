@@ -9,8 +9,10 @@ export default function CategoryItem({ category, onSelectCategory, isActive }) {
   const classes = useStyles(theme);
 
   return (
-    <Card className={clsx(classes.card, { [classes.active]: isActive })}>
-      <CardActionArea onClick={onSelectCategory}>
+    <Card
+      className={clsx(classes.card, { [classes.active]: isActive })}
+      data-testid={`category-${category.uuid}`}>
+      <CardActionArea onClick={onSelectCategory} data-testid={`btn-${category.uuid}`}>
         <CardContent className={classes.cardContent}>
           <Typography variant="subtitle1" component="h3" className={classes.title}>
             {category.name}

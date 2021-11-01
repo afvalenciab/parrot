@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductItem /> Should render correctly 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-card-1 MuiPaper-elevation1 MuiPaper-rounded"
+    data-testid="card-123"
+  >
+    <div
+      class="makeStyles-wrapperContent-2"
+    >
+      <div
+        class="MuiCardMedia-root makeStyles-cardMedia-3"
+      >
+        <span
+          style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+        >
+          <span
+            style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+              style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+            />
+          </span>
+          <img
+            alt="Test 1"
+            data-nimg="intrinsic"
+            decoding="async"
+            src="/_next/image?url=https%3A%2F%2Fiamge.com&w=256&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Fiamge.com&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fiamge.com&w=256&q=75 2x"
+            style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+          />
+          <noscript />
+        </span>
+      </div>
+      <div
+        class="MuiCardContent-root makeStyles-cardContent-4"
+      >
+        <p
+          class="MuiTypography-root makeStyles-productName-5 MuiTypography-subtitle2"
+        >
+          Test 1
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-subtitle2"
+        >
+          $200 MXN
+        </p>
+      </div>
+    </div>
+    <div
+      class="MuiCardActions-root makeStyles-cardActions-6 MuiCardActions-spacing"
+    >
+      <span
+        class="MuiSwitch-root"
+      >
+        <span
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-9 MuiSwitch-switchBase MuiSwitch-colorSecondary PrivateSwitchBase-checked-10 Mui-checked"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <input
+              checked=""
+              class="PrivateSwitchBase-input-12 MuiSwitch-input"
+              type="checkbox"
+              value=""
+            />
+            <span
+              class="MuiSwitch-thumb"
+            />
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </span>
+        <span
+          class="MuiSwitch-track"
+        />
+      </span>
+      <p
+        class="MuiTypography-root makeStyles-available-7 MuiTypography-caption"
+      >
+        Disponible
+      </p>
+    </div>
+  </div>
+</div>
+`;

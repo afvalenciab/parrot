@@ -39,6 +39,10 @@ yarn bootstrap
 yarn clean
 ```
 
+### Environment Variables
+
+Rename '.env.example' file to '.env'
+
 ### Execution
 
 ```
@@ -54,7 +58,7 @@ user: android-challenge@parrotsoftware.io
 pass: 8mngDhoPcB3ckV7X
 ```
 
-### Tets
+### Tests
 
 ```
 yarn run test

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles({
   container: {
     gridArea: 'products',
     padding: ' 0 .5rem 1rem .5rem',
@@ -16,4 +16,4 @@ export const useStyles = makeStyles(theme => ({
       gridTemplateColumns: '1fr',
     },
   },
-}));
+});

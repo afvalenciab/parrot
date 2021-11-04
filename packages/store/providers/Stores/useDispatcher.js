@@ -1,54 +1,12 @@
-import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import * as actions from 'providers/Stores/actions';
 
-import { getStoresRequest, getProductsRequest, editProductRequest } from 'utils/request/stores';
-import { StoreContext } from './index';
-import * as actions from './actions';
-
-let storesDispatcher;
-
-async function getStores() {
-  try {
-    storesDispatcher(actions.getStores.request());
-
-    const { result } = await getStoresRequest();
-
-    storesDispatcher(actions.getStores.success(result));
-  } catch (error) {
-    storesDispatcher(actions.getStores.failure(error));
-  }
-}
-
-async function getProducts(payload) {
-  try {
-    storesDispatcher(actions.getProducts.request());
-
-    const { results } = await getProductsRequest(payload);
-
-    storesDispatcher(actions.getProducts.success(results));
-  } catch (error) {
-    storesDispatcher(actions.getProducts.failure(error));
-  }
-}
-
-async function editProduct(payload) {
-  try {
-    storesDispatcher(actions.editProduct.request());
-
-    await editProductRequest(payload);
-
-    storesDispatcher(actions.editProduct.success(payload));
-  } catch (error) {
-    storesDispatcher(actions.editProduct.failure(error));
-  }
-}
-
-export function useDispatcherStores() {
-  const { dispatch } = useContext(StoreContext);
-  storesDispatcher = dispatch;
+export default function useDispatcher() {
+  const dispatch = useDispatch();
 
   return {
-    getStores,
-    getProducts,
-    editProduct,
+    getStores: () => dispatch(actions.getStores()),
+    getProducts: values => dispatch(actions.getProducts(values)),
+    editProduct: values => dispatch(actions.editProduct(values)),
   };
 }

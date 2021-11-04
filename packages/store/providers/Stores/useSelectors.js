@@ -1,12 +1,9 @@
-import { useContext } from 'react';
-import { StoreContext } from 'providers/Stores';
+import { useSelector } from 'react-redux';
 
-export function useSelectorsStore() {
-  const { state } = useContext(StoreContext);
-
+export default function useSelectors() {
   return {
-    storesState: state.stores,
-    productsState: state.products,
-    editProductState: state.productEdition,
+    storesState: useSelector(state => state.stores),
+    productsState: useSelector(state => state.products),
+    editProductState: useSelector(state => state.productEdition),
   };
 }

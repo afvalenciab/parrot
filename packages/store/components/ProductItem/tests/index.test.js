@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { useDispatcherStores } from 'providers/Stores/useDispatcher';
+import useDispatcherStores from 'providers/Stores/useDispatcher';
 import ProductItem from 'components/ProductItem';
 
 jest.mock('providers/Stores/useDispatcher');

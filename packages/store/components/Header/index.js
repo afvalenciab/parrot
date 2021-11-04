@@ -3,8 +3,8 @@ import { Button, Grid, Menu, MenuItem, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
-import { useDispatcherStores } from 'providers/Stores/useDispatcher';
-import { useSelectorsStore } from 'providers/Stores/useSelectors';
+import useDispatcherStores from 'providers/Stores/useDispatcher';
+import useSelectorsStore from 'providers/Stores/useSelectors';
 
 import { logOut } from 'utils/auth';
 

@@ -3,19 +3,27 @@
  */
 import React from 'react';
 import { render } from '@testing-library/react';
-
+import * as reactRedux from 'react-redux';
 import { getStoresRequest, getProductsRequest, editProductRequest } from 'utils/request/stores';
-import { useDispatcherStores } from 'providers/Stores/useDispatcher';
+import useDispatcherStores from 'providers/Stores/useDispatcher';
 import * as actions from 'providers/Stores/actions';
 
 jest.mock('utils/request/stores');
+
+/*
+NOTE: other way to mock the react-redux
+
+import { useDispatch } from 'react-redux';
+jest.mock('react-redux');
+useDispatch.mockImplementation(() => dispatch);
+*/
 
 describe('useDispatcherStores', () => {
   let dispatch;
 
   beforeEach(() => {
     dispatch = jest.fn();
-    jest.spyOn(React, 'useContext').mockImplementation(() => ({ dispatch }));
+    jest.spyOn(reactRedux, 'useDispatch').mockImplementation(() => dispatch);
 
     getStoresRequest.mockImplementation(() => ({
       result: { uuid: '123', username: 'parrot', stores: [{ uuid: '456', name: 'Store 1' }] },
@@ -33,62 +41,26 @@ describe('useDispatcherStores', () => {
       return null;
     }
 
-    it('Should complete successfully the getStores flow', async () => {
+    it('Should call the dispatch function with the action getStore', async () => {
       await render(<Component />);
 
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(dispatch).toHaveBeenCalledWith(actions.getStores.request());
-      expect(getStoresRequest).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledWith(
-        actions.getStores.success({
-          uuid: '123',
-          username: 'parrot',
-          stores: [{ uuid: '456', name: 'Store 1' }],
-        }),
-      );
-    });
-
-    it('Should complete in a wrong way the getStores flow', async () => {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      getStoresRequest.mockImplementation(() => Promise.reject('error'));
-      await render(<Component />);
-
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(dispatch).toHaveBeenCalledWith(actions.getStores.request());
-      expect(getStoresRequest).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledWith(actions.getStores.failure('error'));
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(actions.getStores());
     });
   });
 
   describe('getProducts', () => {
     function Component() {
       const { getProducts } = useDispatcherStores();
-      getProducts();
+      getProducts({ payload: '123' });
       return null;
     }
 
-    it('Should complete successfully the getProducts flow', async () => {
+    it('Should call the dispatch function with the action getProducts', async () => {
       await render(<Component />);
 
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(dispatch).toHaveBeenCalledWith(actions.getProducts.request());
-      expect(getProductsRequest).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledWith(
-        actions.getProducts.success([
-          { uuid: '123', name: 'Combo1', category: { uuid: '999', name: 'Especiales' } },
-        ]),
-      );
-    });
-
-    it('Should complete in a wrong way the getProducts flow', async () => {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      getProductsRequest.mockImplementation(() => Promise.reject('error'));
-      await render(<Component />);
-
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(dispatch).toHaveBeenCalledWith(actions.getProducts.request());
-      expect(getProductsRequest).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledWith(actions.getProducts.failure('error'));
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(actions.getProducts({ payload: '123' }));
     });
   });
 
@@ -99,24 +71,11 @@ describe('useDispatcherStores', () => {
       return null;
     }
 
-    it('Should complete successfully the editProduct flow', async () => {
+    it('Should call the dispatch function with the action editProduct', async () => {
       await render(<Component />);
 
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(dispatch).toHaveBeenCalledWith(actions.editProduct.request());
-      expect(editProductRequest).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledWith(actions.editProduct.success({ uuid: '123' }));
-    });
-
-    it('Should complete in a wrong way the editProduct flow', async () => {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      editProductRequest.mockImplementation(() => Promise.reject('error'));
-      await render(<Component />);
-
-      expect(dispatch).toHaveBeenCalledTimes(2);
-      expect(dispatch).toHaveBeenCalledWith(actions.editProduct.request());
-      expect(editProductRequest).toHaveBeenCalled();
-      expect(dispatch).toHaveBeenCalledWith(actions.editProduct.failure('error'));
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith(actions.editProduct({ uuid: '123' }));
     });
   });
 });

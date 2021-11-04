@@ -3,7 +3,7 @@ import { useTheme } from '@material-ui/core/styles';
 import Image from 'next/image';
 import clsx from 'clsx';
 
-import { useDispatcherStores } from 'providers/Stores/useDispatcher';
+import useDispatcherStores from 'providers/Stores/useDispatcher';
 
 import { useStyles } from './styles';
 

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
-import { useSelectorsStore } from 'providers/Stores/useSelectors';
+import useSelectorsStore from 'providers/Stores/useSelectors';
 import { getListOfCategories } from 'utils/utilities';
 import CategoryItem from 'components/CategoryItem';
 

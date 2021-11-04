@@ -1,12 +1,23 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import StoresProvider from 'providers/Stores';
+import storeSagas from 'providers/Stores/sagas';
+import reducer from 'providers/Stores/reducer';
 
 import theme from 'theme';
+
+const sagaMiddleware = createSagaMiddleware();
+
+export const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(storeSagas);
 
 function App({ Component, pageProps }) {
   useEffect(() => {
@@ -25,9 +36,9 @@ function App({ Component, pageProps }) {
 
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <StoresProvider>
+        <Provider store={store}>
           <Component {...pageProps} />
-        </StoresProvider>
+        </Provider>
       </ThemeProvider>
     </>
   );

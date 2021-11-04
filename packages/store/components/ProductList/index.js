@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
 import useProducts from 'hooks/useProducts';
-import { useSelectorsStore } from 'providers/Stores/useSelectors';
+import useSelectorsStore from 'providers/Stores/useSelectors';
 import ProductItem from 'components/ProductItem';
 
 import { useStyles } from './styles';

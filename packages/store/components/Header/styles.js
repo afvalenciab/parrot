@@ -16,4 +16,7 @@ export const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
+  skeleton: {
+    backgroundColor: theme.palette.gray1,
+  },
 }));

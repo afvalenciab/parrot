@@ -3,6 +3,8 @@ import { Button, Grid, Menu, MenuItem, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
+import { Skeleton } from 'parrot-ui';
+
 import useDispatcherStores from 'providers/Stores/useDispatcher';
 import useSelectorsStore from 'providers/Stores/useSelectors';
 
@@ -45,29 +47,44 @@ export default function Header({ storeSelected, setStoreSelected }) {
     <Grid className={classes.container} component="header">
       <Grid container alignItems="center" justifyContent="space-between">
         <div>
-          <Button variant="contained" color="default" onClick={handleOpenMenu}>
-            {storeSelected?.name}
-          </Button>
-          <Menu
-            id="categoryMenu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={!!anchorEl}
-            onClose={() => setAnchorEl(null)}>
-            {storesState?.data?.stores.map(item => (
-              <MenuItem id={item.uuid} key={item.uuid} onClick={() => handleSelectStore(item)}>
-                {item.name}
-              </MenuItem>
-            ))}
-          </Menu>
+          {storesState.loading ? (
+            <Skeleton variant="rect" width={230} height={36} style={{ backgroundColor: 'gray' }} />
+          ) : (
+            <>
+              <Button variant="contained" color="default" onClick={handleOpenMenu}>
+                {storeSelected?.name}
+              </Button>
+              <Menu
+                id="categoryMenu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl}
+                onClose={() => setAnchorEl(null)}>
+                {storesState?.data?.stores.map(item => (
+                  <MenuItem id={item.uuid} key={item.uuid} onClick={() => handleSelectStore(item)}>
+                    {item.name}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          )}
         </div>
 
         <Grid className={classes.user}>
           <Grid container alignItems="center" className={classes.username}>
             <PersonOutlineIcon color="secondary" />
-            <Typography variant="caption" color="secondary" align="center">
-              {storesState?.data?.username || storesState?.data?.email}
-            </Typography>
+            {storesState.loading ? (
+              <Skeleton
+                variant="rect"
+                width={200}
+                height={19}
+                style={{ backgroundColor: 'gray' }}
+              />
+            ) : (
+              <Typography variant="caption" color="secondary" align="center">
+                {storesState?.data?.username || storesState?.data?.email}
+              </Typography>
+            )}
           </Grid>
 
           <Button variant="outlined" color="secondary" onClick={() => logOut()}>

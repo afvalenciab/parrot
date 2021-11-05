@@ -67,9 +67,7 @@ export default function Store() {
               categorySelected={categorySelected}
             />
 
-            {storeSelected && categorySelected && (
-              <ProductList storeSelected={storeSelected} categorySelected={categorySelected} />
-            )}
+            <ProductList storeSelected={storeSelected} categorySelected={categorySelected} />
           </Grid>
 
           <SessionExpire />

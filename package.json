@@ -11,6 +11,7 @@
     "login": "yarn workspace login dev",
     "store": "yarn workspace store dev",
     "dev": "yarn run login & yarn run store",
+    "build": "lerna run build",
     "test": "yarn workspace store test"
   },
   "devDependencies": {

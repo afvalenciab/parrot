@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+import { SkeletonCategory } from 'parrot-ui';
+
 import useSelectorsStore from 'providers/Stores/useSelectors';
 import { getListOfCategories } from 'utils/utilities';
 import CategoryItem from 'components/CategoryItem';
@@ -30,14 +32,18 @@ export default function CategoryList({ categorySelected, onSelectCategory }) {
       </Typography>
 
       <Grid className={classes.wrapperCategories}>
-        {categoryList.map(category => (
-          <CategoryItem
-            key={category.uuid}
-            category={category}
-            onSelectCategory={() => onSelectCategory(category)}
-            isActive={category.uuid === categorySelected?.uuid}
-          />
-        ))}
+        {productsState.loading ? (
+          <SkeletonCategory rows={3} />
+        ) : (
+          categoryList.map(category => (
+            <CategoryItem
+              key={category.uuid}
+              category={category}
+              onSelectCategory={() => onSelectCategory(category)}
+              isActive={category.uuid === categorySelected?.uuid}
+            />
+          ))
+        )}
       </Grid>
     </aside>
   );

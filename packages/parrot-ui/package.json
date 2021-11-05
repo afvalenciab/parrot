@@ -1,0 +1,38 @@
+{
+  "name": "parrot-ui",
+  "version": "1.0.0",
+  "description": "UI Guidelines to Parrot UI",
+  "author": "afvalenciab",
+  "license": "MIT",
+  "repository": "https://github.com/afvalenciab/parrot",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "source": "src/index.js",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepare": "run-s build",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom"
+  },
+  "peerDependencies": {
+    "react": "17.0.2",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "microbundle-crl": "^0.13.10",
+    "npm-run-all": "^4.1.5",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "^3.4.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {}
+}

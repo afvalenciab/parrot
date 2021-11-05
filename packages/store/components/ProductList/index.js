@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+import { SkeletonProducts } from 'parrot-ui';
+
 import useProducts from 'hooks/useProducts';
 import useSelectorsStore from 'providers/Stores/useSelectors';
 import ProductItem from 'components/ProductItem';
@@ -36,9 +38,11 @@ export default function ProductList({ categorySelected, storeSelected }) {
         </Typography>
 
         <Grid className={classes.wrapperItems}>
-          {listOfProducts.map(product => (
-            <ProductItem key={product.uuid} product={product} />
-          ))}
+          {productsState.loading ? (
+            <SkeletonProducts rows={4} />
+          ) : (
+            listOfProducts.map(product => <ProductItem key={product.uuid} product={product} />)
+          )}
         </Grid>
       </div>
     </Grid>
